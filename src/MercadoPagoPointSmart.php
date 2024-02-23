@@ -41,7 +41,7 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao incluir Boleto Cobranca: {$response}"];
+            return ['error' => "Falha ao gerar o token: {$response}"];
         }
     }
 
@@ -62,7 +62,7 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao incluir Boleto Cobranca: {$response}"];
+            return ['error' => "Falha aoatualizar o token: {$response}"];
         }
     }
 }
