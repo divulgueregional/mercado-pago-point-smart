@@ -24,7 +24,7 @@ form_id=mp&state=RANDOM_ID&redirect_uri=https://www.redirect-url.com <br><br>
 
 vai abrir o seu dominio e na url vai conter o code TG<br>
 EX: code=TG-65d8d73eecda2a0001c6a8a7-468736526&state=RANDOM_ID<br>
-pegar apenas <b>TG-65d8d73eecda2a0001c6a8a7-468736526&state</b><br>
+pegar apenas <b>TG-65d8d73eecda2a0001c6a8a7-468736526</b><br>
 com o tg você tem 10 minutos para gerar o token.<br>
 caso não gerar o token o TG expira e precisa rodar novamente o link no cadastro de seu cliente.<hr>
 <b>Entra na pasta TOKEN e tem o exemplo para criar e atualizar o token.</b>
