@@ -10,8 +10,8 @@ Detalhes da aplicação clica em Editar e coloca seu dominio em URLs de redireci
   ativar credencial <br>
 - vai aparecer<br>
   Client ID: 999999999999<br>
-  Client Secret: 999f9999f99999h9h9<br>
-  Guarde Client ID e Client Secret, vai precisar para trabalhar com os endpoints<br><hr>
+  Client Secret: 999f9999f99999h9h9<br><br>
+  guarde Client ID e Client Secret, vai precisar para o token<br><hr>
 
 Para gerar o token é necessário antes pedir para o cliente fazer o login na conta do mercado pago.<br>
 Abra uma aba ao lado (navegador) e coloca o link abaixo.<br>
@@ -26,4 +26,5 @@ vai abrir o seu dominio e na url vai conter o code TG<br>
 EX: code=TG-65d8d73eecda2a0001c6a8a7-468736526&state=RANDOM_ID<br>
 pegar apenas TG-65d8d73eecda2a0001c6a8a7-468736526&state<br>
 com o tg você tem 10 minutos para gerar o token.<br>
-caso não gerar o token o TG expira e precisa rodar novamente o link no cadastro de seu cliente.
+caso não gerar o token o TG expira e precisa rodar novamente o link no cadastro de seu cliente.<hr>
+Entra na pasta TOKEN e tem o exemplo para criar e atualizar o token.
