@@ -1,6 +1,6 @@
-## Pacote integração Point Smart do Mercado Pago
+## Pacote integração Point Smart do Mercado Pago - PHP
 
-Esse pacote oferece integração com a maquininha Point Smart do Mercado Pago, conforme documentação da API do Mercado Pago. Essa biblioteca pode ser facilmente integrada ao seu software e/ou ERP.
+Esse pacote oferece integração com a maquininha Point Smart do Mercado Pago para consumir em PHP, conforme documentação da API do Mercado Pago. Essa biblioteca pode ser facilmente integrada ao seu software e/ou ERP.
 
 #### Observação
 
