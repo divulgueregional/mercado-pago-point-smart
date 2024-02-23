@@ -1,0 +1,19 @@
+{
+    "name": "divulgueregional/mercado-pago-point-smart",
+    "description": "API para integração com a maquina Point Smart do Mercado Pago",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Divulgueregional\\MercadoPagoPointSmart\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Roseno Matos",
+            "email": "roseno@drsystema.com.br"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
