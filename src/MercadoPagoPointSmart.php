@@ -10,66 +10,45 @@ use JetBrains\PhpStorm\NoReturn;
 
 class MercadoPagoPointSmart
 {
-    protected $urlToken;
     protected $header;
-    protected $token;
-    protected $config;
-    protected $clientToken;
-    protected $fields;
     protected $headers;
-    // protected $optionsRequest = [];
-
     private $client;
-    // function __construct(array $config)
-    function __construct($config)
-    {
-        $this->config = $config;
 
-        $this->clientToken = new Client([
+    function __construct()
+    {
+        $this->client = new Client([
             'base_uri' => 'https://api.mercadopago.com',
         ]);
-
-        $this->token = 'TEST-5032970848861472-021413-c20a76d29ae88001de5bc24bd9d60419-1682170368';
     }
 
     ######################################################
     ############## TOKEN #################################
     ######################################################
-    public function gerarToken()
+    public function gerarToken($body)
     {
+        $options['body'] = json_encode($body);
+        $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
         try {
-            $response = $this->clientToken->request(
+            $response = $this->client->request(
                 'POST',
                 '/oauth/token',
-                [
-                    'headers' => [
-                        'Accept' => '*/*',
-                        'Content-Type' => 'application/x-www-form-urlencoded',
-                        'Authorization' => 'Basic ' . base64_encode($this->config['client_id'] . ':' . $this->config['client_secret']) . ''
-                    ],
-                    'verify' => false,
-                    'form_params' => [
-                        'grant_type' => 'client_credentials',
-                        'scope' => 'cobrancas.boletos-info cobrancas.boletos-requisicao'
-                    ]
-                ]
+                $options
             );
-            $retorno = json_decode($response->getBody()->getContents());
-            if (isset($retorno->access_token)) {
-                $this->token = $retorno->access_token;
-            }
-            return $this->token;
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
         } catch (\Exception $e) {
-            return new Exception("Falha ao gerar Token: {$e->getMessage()}");
+            $response = $e->getMessage();
+            return ['error' => "Falha ao incluir Boleto Cobranca: {$response}"];
         }
     }
 
-    public function atualizarToken($dados)
+    public function atualizarToken($body)
     {
-        // $options = $this->optionsRequest;
-        $options['body'] = json_encode($dados);
-        // $options['headers']['Content-Type'] = 'application/json';
-        // $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['body'] = json_encode($body);
+        $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded';
         try {
             $response = $this->client->request(
                 'POST',

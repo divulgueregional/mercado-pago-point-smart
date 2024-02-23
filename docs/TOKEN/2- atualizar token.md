@@ -1,0 +1,26 @@
+## Atualizar Token Point Smart do Mercado Pago
+
+Apos criar o token tem um prazo de validade e precisa ser atualizado.
+
+```php
+    require_once '../../../vendor/autoload.php';
+    use Divulgueregional\MercadoPagoPointSmart\MercadoPagoPointSmart;
+    $PointSmart = new MercadoPagoPointSmart();
+
+    $config = [
+        'client_id' => '',
+        'client_secret' => '',
+        'grant_type' => 'refresh_token',
+        'refresh_token' => '',
+    ];
+
+    //atualizar o token
+    try {
+        $token = $PointSmart->atualizarToken($config);
+        echo "<pre>";
+        print_r($token);
+
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+```
