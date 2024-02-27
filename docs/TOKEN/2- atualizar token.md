@@ -12,7 +12,7 @@ O token tem um prazo de validade e precisa ser atualizado.
         'client_id' => '',
         'client_secret' => '',
         'grant_type' => 'refresh_token',
-        'refresh_token' => '',
+        'refresh_token' => '',//código TG
     ];
 
     //atualizar o token

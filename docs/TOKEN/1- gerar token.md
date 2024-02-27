@@ -12,7 +12,7 @@ Criar o token necessário para operar seu aplicativo em nome de um vendedor.
         'client_secret' => '',
         'grant_type' => 'authorization_code',
         'redirect_uri' => '',
-        'code' => '',
+        'code' => '',//código TG
     ];
 
     //criar o token
