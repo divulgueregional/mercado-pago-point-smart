@@ -8,7 +8,6 @@ Este endpoint permite que você crie uma intenção de pagamento, ou seja, uma c
     $token = '';//você gerencia seu token
     $PointSmart = new MercadoPagoPointSmart($token);
 
-
     $filter = [
         'amount' => 150,
         'description' => "Pedido 0002 - Débito",
