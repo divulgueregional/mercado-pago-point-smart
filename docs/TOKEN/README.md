@@ -15,4 +15,4 @@
   Client Secret: 999f9999f99999h9h9<br><br>
   guarde Client ID e Client Secret, vai precisar para o token<br><hr>
 
-  - Agora precisa gerar o código TG<br>
+<b>Agora precisa gerar o código TG</b><br>
