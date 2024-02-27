@@ -31,12 +31,12 @@ composer update
 composer update divulgueregional/mercado-pago-point-smart 1.0.0
 ```-->
 
-<hr>
+<hr><br>
 ### Documentação:
 
 Acesse a pasta docs e leia o README.md
 
-<hr>
+<hr><br>
 #### O QUE VOCÊ PODE UTILIZAR
 
 <b>SEGURANÇA</b><br>
