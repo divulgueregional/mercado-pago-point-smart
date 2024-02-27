@@ -45,6 +45,7 @@ Definir pagamento por crédito, débito e voucher<br>
 
 ```php
     'payment' => [
+        "type" => "credit_card",
         "installments" => 1, // aqui é a qtd de parcelas.
         "installments_cost" => "seller", //seller ou buyer
     ],
@@ -54,6 +55,7 @@ Definir pagamento por crédito, débito e voucher<br>
 
 ```php
     'payment' => [
+        "type" => "voucher_card",
         "voucher_type" => 'sodexo', //  [sodexo] ou [alelo]
     ],
 ```
