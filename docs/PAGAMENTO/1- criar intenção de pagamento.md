@@ -58,7 +58,7 @@ Definir pagamento por crédito, débito e voucher<br>
     ],
 ```
 
-<b>VALOR DE REEBIMENTO</b>
+<b>VALOR DE REEBIMENTO</b><br>
 O valor não pode ter virgula ou ponto.<br>
 Exemplo: um real e cinquenta centavos
 
