@@ -1,0 +1,63 @@
+## Criar intenção de pagamento
+
+Este endpoint permite que você crie uma intenção de pagamento, ou seja, uma chamada que contém os detalhes de uma transação a ser realizada e atribuí-la a um dispositivo.
+
+```php
+    require_once '../../../vendor/autoload.php';
+    use Divulgueregional\MercadoPagoPointSmart\MercadoPagoPointSmart;
+    $token = '';//você gerencia seu token
+    $PointSmart = new MercadoPagoPointSmart($token);
+
+
+    $filter = [
+        'amount' => 150,
+        'description' => "Pedido 0002 - Débito",
+        'payment' => [
+            // "installments" => 1, // aqui é a qtd de parcelas. tipo for igual a [credit_card]
+            "type" => "debit_card", //debit_card, credit_card ou voucher_card
+            // "installments_cost" => "seller", //seller ou buyer tipo for igual a [credit_card]
+            // "voucher_type" => 'sodexo', //  [sodexo] ou [alelo] tipo for igual a [voucher_card]
+        ],
+        "additional_info" => [
+            "external_reference" => "Pedido 002",
+            "print_on_terminal" => false
+        ]
+    ];
+    $device_id = 'PAX_A910__SMARTPOS1494110941';
+
+    try {
+    $response = $PointSmart->criarPagamento($device_id, $filter);
+        echo "<pre>";
+        print_r($token);
+
+    } catch (\Exception $e) {
+        echo $e->getMessage();
+    }
+```
+
+<hr>
+Definir pagamento por crédito, débito e voucher<br>
+<b>DÉBITO</b>
+
+```php
+    'payment' => [
+        "type" => "debit_card",
+    ],
+```
+
+<b>CRÉDITO</b>
+
+```php
+    'payment' => [
+        "installments" => 1, // aqui é a qtd de parcelas. tipo for igual a [credit_card]
+        "installments_cost" => "seller", //seller ou buyer tipo for igual a [credit_card]
+    ],
+```
+
+<b>VOULCHER</b>
+
+```php
+    'payment' => [
+        "voucher_type" => 'sodexo', //  [sodexo] ou [alelo] tipo for igual a [voucher_card]
+    ],
+```

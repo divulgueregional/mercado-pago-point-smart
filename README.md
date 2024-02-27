@@ -54,6 +54,12 @@ Acesse a pasta docs e leia o README.md
 - Alterar Modo Criação
   <br>
 
+  <b>PAGAMENTO</b><br>
+
+- Criar intenção de pagamento
+- Alterar Modo Criação
+  <br>
+
 <hr>
 ## Autor:
 

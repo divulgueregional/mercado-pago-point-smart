@@ -98,7 +98,7 @@ class MercadoPagoPointSmart
         }
     }
 
-    public function alterarModoCriacao($device_id, $filter)
+    public function alterarModoCriacao(string $device_id, $filter)
     {
         $options['headers']['Authorization'] = "Bearer {$this->token}";
         $options['headers']['Content-Type'] = 'application/json';
@@ -118,6 +118,73 @@ class MercadoPagoPointSmart
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return ['error' => "Falha ao alterar modo de criação: {$response}"];
+        }
+    }
+
+    ##############################################
+    ######## PAGAMENTO ###########################
+    ##############################################
+    public function criarPagamento(string $device_id, $filter)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/point/integration-api/devices/{$device_id}/payment-intents",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao incluir Boleto Cobranca: {$response}"];
+        }
+    }
+
+    public function cancelarPagamento(string $device_id, string $payment_id)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'DELETE',
+                "/point/integration-api/devices/{$device_id}/payment-intents/{$payment_id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao excluir Webhook Pix: {$response}"];
+        }
+    }
+
+    public function buscarPagamento(string $payment_id)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/point/integration-api/payment-intents/{$payment_id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao excluir Webhook Pix: {$response}"];
         }
     }
 }
