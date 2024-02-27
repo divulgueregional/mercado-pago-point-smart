@@ -1,6 +1,6 @@
 ## Obter dispositivos do Mercado Pago
 
-Listar Disposotivos
+Este endpoint permite que você obtenha os dispositivos Point associados à sua conta do Mercado Pago. Os dispositivos podem ser filtrados por ponto de venda e/ou loja.
 
 ```php
     require_once '../../../vendor/autoload.php';
