@@ -54,10 +54,11 @@ Acesse a pasta docs e leia o README.md
 - Alterar Modo Criação
   <br>
 
-  <b>PAGAMENTO</b><br>
+<b>PAGAMENTO</b><br>
 
 - Criar intenção de pagamento
 - Alterar Modo Criação
+- Buscar em intenção de pagamento
   <br>
 
 <hr>
