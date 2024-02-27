@@ -30,13 +30,14 @@ composer update
 ```php
 composer update divulgueregional/mercado-pago-point-smart 1.0.0
 ```-->
-
 <hr><br>
+
 ### Documentação:
 
 Acesse a pasta docs e leia o README.md
 
 <hr><br>
+
 #### O QUE VOCÊ PODE UTILIZAR
 
 <b>SEGURANÇA</b><br>
