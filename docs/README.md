@@ -6,3 +6,4 @@
 - <b>Segundo:</b> Criar uma conta PJ (Softaware) e criar uma conta fisica (CPF - para silumlar como cliente)<br>
 - <b>Terceiro:</b> Vincular a conta PJ na física para pegar o código TG<br>
 - <b>Quarto:</b> Vincular a máquina Point-Smart na pessoa fisica (CPF)<br>
+- <b>Quinto:</b> Passar o dispositivo no modo PDV<br>
