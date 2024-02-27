@@ -20,7 +20,7 @@ Este endpoint permite que você crie uma intenção de pagamento, ou seja, uma c
             "print_on_terminal" => false
         ]
     ];
-    $device_id = 'PAX_A910__SMARTPOS1494110941';
+    $device_id = '';
 
     try {
     $response = $PointSmart->criarPagamento($device_id, $filter);
