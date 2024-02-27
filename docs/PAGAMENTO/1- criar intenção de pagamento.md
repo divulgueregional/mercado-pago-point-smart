@@ -57,3 +57,11 @@ Definir pagamento por crédito, débito e voucher<br>
         "voucher_type" => 'sodexo', //  [sodexo] ou [alelo]
     ],
 ```
+
+<b>VALOR DE REEBIMENTO</b>
+O valor não pode ter virgula ou ponto.<br>
+Exemplo: um real e cinquenta centavos
+
+```php
+    'amount' => 150,
+```
