@@ -19,6 +19,8 @@ composer require divulgueregional/mercado-pago-point-smart
 
 ```
 
+<br>
+
 <!-- ## Atualizar:
 
 ```php
@@ -30,13 +32,14 @@ composer update
 ```php
 composer update divulgueregional/mercado-pago-point-smart 1.0.0
 ```-->
-<hr><br>
+<hr>
 
 ### Documentação:
 
 Acesse a pasta docs e leia o README.md
+<br>
 
-<hr><br>
+<hr>
 
 #### O QUE VOCÊ PODE UTILIZAR
 
@@ -49,7 +52,9 @@ Acesse a pasta docs e leia o README.md
 
 - Obter dispositivo
 - Alterar Modo Criação
+  <br>
 
+<hr>
 ## Autor:
 
 Roseno Matos (developer) rosenomatos@gmail.com<br>
