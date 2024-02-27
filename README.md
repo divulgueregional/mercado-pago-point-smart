@@ -42,7 +42,10 @@ Acesse a pasta docs e leia o README.md
 - Gerar o token
 - Atualizar o token
 
-<!-- <b>COBRANÇA</b><br> -->
+<b>DISPOSITIVO (máquina point smart)</b><br>
+
+- Obter dispositivo
+- Alterar Modo Criação
 
 ## Autor:
 

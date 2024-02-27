@@ -13,12 +13,17 @@ class MercadoPagoPointSmart
     protected $header;
     protected $headers;
     private $client;
+    private $token;
 
-    function __construct()
+    function __construct($token = '')
     {
         $this->client = new Client([
             'base_uri' => 'https://api.mercadopago.com',
         ]);
+
+        if ($token != '') {
+            $this->token = $token;
+        }
     }
 
     ######################################################
@@ -63,6 +68,56 @@ class MercadoPagoPointSmart
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return ['error' => "Falha aoatualizar o token: {$response}"];
+        }
+    }
+
+    ##############################################
+    ######## DISPOSITIVO #########################
+    ##############################################
+    public function obterDispositivo($filters)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['query'] = $filters;
+
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/point/integration-api/devices",
+                $options
+            );
+
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao obter o dispositivo: {$response}"];
+        }
+    }
+
+    public function alterarModoCriacao($device_id, $filter)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'PATCH',
+                "/point/integration-api/devices/{$device_id}",
+                $options
+            );
+
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao alterar modo de criação: {$response}"];
         }
     }
 }
