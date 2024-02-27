@@ -1,6 +1,7 @@
 ## Atualizar Token Point Smart do Mercado Pago
 
-Apos criar o token tem um prazo de validade e precisa ser atualizado.
+Atualizar o token necessário para operar seu aplicativo em nome de um vendedor.
+O token tem um prazo de validade e precisa ser atualizado.
 
 ```php
     require_once '../../../vendor/autoload.php';

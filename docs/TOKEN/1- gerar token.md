@@ -1,6 +1,6 @@
 ## Gerar Token Point Smart do Mercado Pago
 
-Criar o token.
+Criar o token necessário para operar seu aplicativo em nome de um vendedor.
 
 ```php
     require_once '../../../vendor/autoload.php';
