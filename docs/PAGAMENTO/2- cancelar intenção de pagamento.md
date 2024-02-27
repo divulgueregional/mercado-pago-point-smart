@@ -13,7 +13,7 @@ Este endpoint permite cancelar uma intenção de pagamento quando seu status for
     try {
         $response = $PointSmart->cancelarPagamento($device_id, $payment_id);
         echo "<pre>";
-        print_r($response); //guardar no banco, duração de 10 minutos
+        print_r($response);
 
     } catch (\Exception $e) {
         echo $e->getMessage();

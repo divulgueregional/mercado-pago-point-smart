@@ -13,10 +13,7 @@ Este endpoint permite que você crie uma intenção de pagamento, ou seja, uma c
         'amount' => 150,
         'description' => "Pedido 0002 - Débito",
         'payment' => [
-            // "installments" => 1, // aqui é a qtd de parcelas. tipo for igual a [credit_card]
-            "type" => "debit_card", //debit_card, credit_card ou voucher_card
-            // "installments_cost" => "seller", //seller ou buyer tipo for igual a [credit_card]
-            // "voucher_type" => 'sodexo', //  [sodexo] ou [alelo] tipo for igual a [voucher_card]
+            "type" => "debit_card",
         ],
         "additional_info" => [
             "external_reference" => "Pedido 002",
@@ -49,8 +46,8 @@ Definir pagamento por crédito, débito e voucher<br>
 
 ```php
     'payment' => [
-        "installments" => 1, // aqui é a qtd de parcelas. tipo for igual a [credit_card]
-        "installments_cost" => "seller", //seller ou buyer tipo for igual a [credit_card]
+        "installments" => 1, // aqui é a qtd de parcelas.
+        "installments_cost" => "seller", //seller ou buyer
     ],
 ```
 
@@ -58,6 +55,6 @@ Definir pagamento por crédito, débito e voucher<br>
 
 ```php
     'payment' => [
-        "voucher_type" => 'sodexo', //  [sodexo] ou [alelo] tipo for igual a [voucher_card]
+        "voucher_type" => 'sodexo', //  [sodexo] ou [alelo]
     ],
 ```

@@ -12,7 +12,7 @@ Este endpoint fornecerá as informações da intenção de pagamento criada nos 
     try {
         $response = $PointSmart->buscarPagamento($payment_id);
         echo "<pre>";
-        print_r($response); //guardar no banco, duração de 10 minutos
+        print_r($response);
 
     } catch (\Exception $e) {
         echo $e->getMessage();
