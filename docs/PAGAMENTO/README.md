@@ -8,3 +8,4 @@
 - <b>Status do pagamento:</b><br>
 - <b>Lista de pagamentos:</b><br>
 - <b>Lista de transações:</b><br>
+- <b>Buscar pagamento detalhado após pagamento:</b><br>

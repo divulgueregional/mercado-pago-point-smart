@@ -188,6 +188,29 @@ class MercadoPagoPointSmart
         }
     }
 
+    public function buscarDetalhadaPagamento(string $payment_id)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/v1/payments/{$payment_id}",
+                $options
+            );
+
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao obter o detalhe do pagamento: {$response}"];
+        }
+    }
+
     public function listaDePagamento($filters)
     {
         $options['headers']['Authorization'] = "Bearer {$this->token}";

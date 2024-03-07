@@ -62,6 +62,7 @@ Acesse a pasta docs e leia o README.md
 - Status do pagamento
 - Lista de pagamento
 - Lista de transações
+- Buscar pagamento detalhado após pagamento
   <br>
 
 <hr>
