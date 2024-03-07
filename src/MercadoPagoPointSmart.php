@@ -211,4 +211,27 @@ class MercadoPagoPointSmart
             return ['error' => "Falha ao listar os pagamentos: {$response}"];
         }
     }
+
+    public function statusPagamento($payment_id)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/point/integration-api/payment-intents/{$payment_id}/events",
+                $options
+            );
+
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao listar os pagamentos: {$response}"];
+        }
+    }
 }

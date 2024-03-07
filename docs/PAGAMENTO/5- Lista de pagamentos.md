@@ -8,9 +8,13 @@ Este endpoint lista os pagamentos criados e pode ser filtrados pela data incial 
     $token = '';//você gerencia seu token
     $PointSmart = new MercadoPagoPointSmart($token);
 
-    $payment_id = '';
+    $filter = [
+        'startDate' => implode("-", array_reverse(explode("/", $Post->startDate))),
+        'endDate' => implode("-", array_reverse(explode("/", $Post->endDate))),
+    ];
+
     try {
-        $response = $PointSmart->buscarPagamento($payment_id);
+        $response = $PointSmart->listaDePagamento($filter);
         echo "<pre>";
         print_r($response);
 
