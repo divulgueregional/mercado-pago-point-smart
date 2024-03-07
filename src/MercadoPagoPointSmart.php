@@ -142,7 +142,7 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao incluir Boleto Cobranca: {$response}"];
+            return ['error' => "Falha ao gerar intenção de pagamento: {$response}"];
         }
     }
 
@@ -163,7 +163,7 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao excluir Webhook Pix: {$response}"];
+            return ['error' => "Falha ao cancelar intenção de pagamento: {$response}"];
         }
     }
 
@@ -184,7 +184,31 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao excluir Webhook Pix: {$response}"];
+            return ['error' => "Falha ao buscar intenção de pagamento: {$response}"];
+        }
+    }
+
+    public function listaDePagamento($filters)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['query'] = $filters;
+
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/point/integration-api/payment-intents/events",
+                $options
+            );
+
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao listar os pagamentos: {$response}"];
         }
     }
 }

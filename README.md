@@ -59,6 +59,7 @@ Acesse a pasta docs e leia o README.md
 - Criar intenção de pagamento
 - Alterar Modo Criação
 - Buscar em intenção de pagamento
+- Listar pagamentos
   <br>
 
 <hr>
