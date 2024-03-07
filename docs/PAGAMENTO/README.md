@@ -5,3 +5,6 @@
 - <b>Criar intenção de pagamento:</b><br>
 - <b>Cancelar intenção de pagamento:</b><br>
 - <b>Buscar em intenção de pagamento:</b><br>
+- <b>Status do pagamento:</b><br>
+- <b>Lista de pagamentos:</b><br>
+- <b>Lista de transações:</b><br>
