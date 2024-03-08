@@ -142,7 +142,7 @@ class MercadoPagoPointSmart
             return $e->getMessage();
         } catch (\Exception $e) {
             $response = $e->getMessage();
-            return ['error' => "Falha ao gerar intenção de pagamento: {$response}"];
+            return ['error' => "Falha ao criar pagamento: {$response}"];
         }
     }
 
@@ -279,6 +279,53 @@ class MercadoPagoPointSmart
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return ['error' => "Falha ao listar os pagamentos: {$response}"];
+        }
+    }
+
+    ##############################################
+    ######## ESTORNO ###############@@############
+    ##############################################
+    public function estornarPagamento($payment_id)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/v1/payments/{$payment_id}/refunds",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao fazer o estorno: {$response}"];
+        }
+    }
+
+    public function buscarEstornarPagamento($payment_id, $idEstorno)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "v1/payments/{$payment_id}/refunds/{$idEstorno}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar o estorno: {$response}"];
         }
     }
 }
