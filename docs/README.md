@@ -11,3 +11,13 @@
 - <b>Sexto:</b> Passar o dispositivo no modo PDV usando a api dispositivo<br>
 - <b>Sétimo:</b> Gerar a intenção pagamento via api<br>
 - <b>Oitavo:</b> Receber na Point Smart<br>
+
+Para um melhor entendimento e exemplo de uso, foi documentado.<br>
+
+- TOKEN<br>
+- CÓDIGO TG<br>
+- DISPOSITIVO<br>
+- VINCULAR POINT-SMART<br>
+- PAGAMENTO<br>
+- ESTORNO<br>
+- WEBHOOK<br>
