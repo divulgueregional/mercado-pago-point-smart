@@ -65,7 +65,7 @@ Acesse a pasta docs e leia o README.md
 - Buscar pagamento detalhado após pagamento
   <br>
 
-  <b>ESTORNO</b><br>
+<b>ESTORNO</b><br>
 
 - Estornar um pagamento.
 - Buasca um estorno realizado.

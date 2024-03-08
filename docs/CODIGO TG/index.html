@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Exibir e Copiar Código Mercado Pago</title>
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Alterado de row para column */
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+        }
+
+        .box {
+            text-align: center; /* Certifica que o texto está centralizado */
+            background: transparent;
+        }
+
+        #code {
+            font-size: 24px;
+            margin: 20px 0; /* Adiciona um espaço acima e abaixo do código */
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        // Função para extrair parâmetros da URL
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Função para copiar o código para a área de transferência
+        function copyToClipboard() {
+            const copyText = document.getElementById("code");
+            navigator.clipboard.writeText(copyText.innerText).then(() => {
+                alert("Código copiado para a área de transferência!");
+            }).catch(err => {
+                console.error('Erro ao copiar texto: ', err);
+            });
+        }
+
+        // Função para definir o código na página
+        function setCode() {
+            const code = getParameterByName('code');
+            document.getElementById("code").innerText = code ? code : 'Código não fornecido';
+        }
+    </script>
+</head>
+<body onload="setCode()">
+<div class="container">
+    <div class="box">
+        <img src="logo.png" alt="Logo">
+        <h1 id="code"></h1>
+        <button onclick="copyToClipboard()">Copiar Código</button>
+    </div>
+</div>
+</body>
+</html>
