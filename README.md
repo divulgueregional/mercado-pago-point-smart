@@ -74,6 +74,10 @@ Acesse a pasta docs e leia o README.md
 
 - Receber as notificações.
 
+<b>Quais cartões posso aceitar com a Point?</b><br>
+
+- Abra o link para ver os tipos de cartões: https://www.mercadopago.com.br/ajuda/quais-cartoes-posso-aceitar-com-a-point_2604
+
 <hr>
 ## Autor:
 
