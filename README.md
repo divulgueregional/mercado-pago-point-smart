@@ -21,17 +21,18 @@ composer require divulgueregional/mercado-pago-point-smart
 
 <br>
 
-<!-- ## Atualizar:
+## Atualizar:
 
 ```php
 composer update
-``` -->
+```
 
-<!-- <b>Ou pela última tag: </b>
+<b>Ou pela última tag: </b>
 
 ```php
-composer update divulgueregional/mercado-pago-point-smart 1.0.0
-```-->
+composer update divulgueregional/mercado-pago-point-smart 1.0.4
+```
+
 <hr>
 
 ### Documentação:
@@ -68,7 +69,7 @@ Acesse a pasta docs e leia o README.md
 <b>ESTORNO</b><br>
 
 - Estornar um pagamento.
-- Buasca um estorno realizado.
+- Busca um estorno realizado.
 
 <b>WEBHOOK</b><br>
 
