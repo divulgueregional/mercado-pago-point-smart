@@ -80,6 +80,18 @@ Acesse a pasta docs e leia o README.md
 - Abra o link para ver os tipos de cartões: https://www.mercadopago.com.br/ajuda/quais-cartoes-posso-aceitar-com-a-point_2604
 
 <hr>
+<b>PIX</b><br>
+Geração do pix usa o mesmo token que a Point Smart.
+
+LOJA<br>
+
+- Criar loja
+- Obter loja
+- Buscar em loja
+- Atualizar loja
+- Excluir loja
+
+<hr>
 ## Autor:
 
 Roseno Matos (developer) rosenomatos@gmail.com<br>

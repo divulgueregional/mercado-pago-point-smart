@@ -14,6 +14,7 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "^7.0"
+        "guzzlehttp/guzzle": "^7.0",
+        "endroid/qr-code": "^5.0"
     }
 }

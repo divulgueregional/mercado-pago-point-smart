@@ -328,4 +328,307 @@ class MercadoPagoPointSmart
             return ['error' => "Falha ao buscar o estorno: {$response}"];
         }
     }
+
+
+    ##############################################
+    ######## PIX #################################
+    ##############################################
+
+    ##############################################
+    ######## LOJA ################################
+    ##############################################
+    public function criarLoja($user_id, $filter)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/users/{$user_id}/stores",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao criar a loja: {$response}"];
+        }
+    }
+
+    public function obterLoja($id)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/stores/{$id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao obter a loja: {$response}"];
+        }
+    }
+
+    public function buscarLojas($id, $filter)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/users/{$id}/stores/search",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar a loja: {$response}"];
+        }
+    }
+
+    public function excluirLoja(string $user_id, $filter)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'DELETE',
+                "/users/{$user_id}/stores/{$filter['id']}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao excluir a loja: {$response}"];
+        }
+    }
+
+    ##############################################
+    ######## CAIXA ###############################
+    ##############################################
+    public function criarCaixa($filter)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/pos",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao criar o caixa: {$response}"];
+        }
+    }
+
+    public function obterCaixa($id)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/pos/{$id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao obter o caixa: {$response}"];
+        }
+    }
+
+    public function buscarCaixa($external_id)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/pos/external_id/{$external_id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar o caixa: {$response}"];
+        }
+    }
+
+    public function mostrarTodosCaixas()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/pos",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao mostrar os caixas: {$response}"];
+        }
+    }
+
+    public function excluirCaixa(string $id)
+    {
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'DELETE',
+                "/pos/$id",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao excluir o caixa: {$response}"];
+        }
+    }
+
+    ##############################################
+    ######## PIX #################################
+    ##############################################
+    public function criarPix($filter, $user_id, $ponto_venda)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/instore/orders/qr/seller/collectors/{$user_id}/pos/{$ponto_venda}/qrs",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao criar pix: {$response}"];
+        }
+    }
+
+    public function buscarPixCriado($external_reference)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/merchant_orders/?external_reference/{$external_reference}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar pix criado: {$response}"];
+        }
+    }
+
+    public function buscarPixPago($payment_id)
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/v1/payments/{$payment_id}",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar pix recebido: {$response}"];
+        }
+    }
+
+    //Em teste
+    public function obterMeiosPagamentos()
+    {
+        date_default_timezone_set('America/Sao_Paulo');
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['Content-Type'] = 'application/json';
+        try {
+            $response = $this->client->request(
+                'GET',
+                "/v1/payment_methods",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao buscar pix recebido: {$response}"];
+        }
+    }
 }
