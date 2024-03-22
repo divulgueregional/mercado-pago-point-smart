@@ -30,7 +30,7 @@ composer update
 <b>Ou pela última tag: </b>
 
 ```php
-composer update divulgueregional/mercado-pago-point-smart 1.0.5
+composer update divulgueregional/mercado-pago-point-smart 1.0.6
 ```
 
 <hr>
@@ -81,7 +81,8 @@ Acesse a pasta docs e leia o README.md
 
 <hr>
 <b>PIX</b><br>
-Geração do pix usa o mesmo token que a Point Smart.
+Geração do pix usa o mesmo token que a Point Smart.<br>
+Crie uma loja e um caixa para depois gerar um pix.<br>
 
 LOJA<br>
 
@@ -91,7 +92,20 @@ LOJA<br>
 - Atualizar loja
 - Excluir loja
 
+CAIXA<br>
+
+- Criar Caixa
+- Obter Caixa
+- Buscar em Caixa
+- Mostrar Todos Caixa
+- Excluir Caixa
+
+PIX<br>
+
+- Criar Pix
+- Buscar Pix Criado
 <hr>
+
 ## Autor:
 
 Roseno Matos (developer) rosenomatos@gmail.com<br>
