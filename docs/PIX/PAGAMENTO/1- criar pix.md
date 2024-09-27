@@ -53,3 +53,34 @@ Gerar pix para ser recebido por meio de código de barras.
         echo $e->getMessage();
     }
 ```
+
+Para pix payment você precisa gerar um numero aleatório pra ser uma requisição única.
+
+```php
+    require_once '../../../vendor/autoload.php';
+    use Divulgueregional\MercadoPagoPointSmart\MercadoPagoPointSmart;
+    $token = '';//você gerencia seu token
+    $MercadoPago = new MercadoPagoPointSmart($token);
+
+    $terminal_referente = '';
+    $codigo_interno = '';//gere seu numero interno
+    $valor = 1.65;
+    $filter = [
+        "description" => "Venda produto",
+        "external_reference" => $terminal_referente,
+        "payer" => [
+            "entity_type" => "individual",
+            "type" => "customer",
+            "id" => null,
+            "email" => "teste@gmail.com"
+        ],
+        "notification_url" => "https://meu_dominio.com.br/webhook/webhook_mercado_pago",
+        "payment_method_id" => "pix",
+        "transaction_amount" => (float) $valor,
+    ];
+
+    $response = $MercadoPago->criarPixPagament($filter, $codigo_interno);
+
+    echo "<pre>";
+    print_r($response);
+```
