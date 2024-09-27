@@ -542,6 +542,7 @@ class MercadoPagoPointSmart
     ##############################################
     ######## PIX #################################
     ##############################################
+    //pix por comissão mas não tem como conferir o recebimento
     public function criarPix($filter, $user_id, $ponto_venda)
     {
         date_default_timezone_set('America/Sao_Paulo');
@@ -552,6 +553,30 @@ class MercadoPagoPointSmart
             $response = $this->client->request(
                 'POST',
                 "/instore/orders/qr/seller/collectors/{$user_id}/pos/{$ponto_venda}/qrs",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao criar pix: {$response}"];
+        }
+    }
+
+    //pix por meio de payment
+    public function criarPixPagament($filter, String $codigo_interno)
+    {
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['headers']['X-Idempotency-Key'] = $codigo_interno;
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/v1/payments",
                 $options
             );
             $statusCode = $response->getStatusCode();
