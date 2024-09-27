@@ -567,7 +567,7 @@ class MercadoPagoPointSmart
     }
 
     //pix por meio de payment
-    public function criarPixPagament($filter, String $codigo_interno)
+    public function criarPixPayment($filter, String $codigo_interno)
     {
         $options['headers']['Content-Type'] = 'application/json';
         $options['headers']['X-Idempotency-Key'] = $codigo_interno;
@@ -590,6 +590,7 @@ class MercadoPagoPointSmart
         }
     }
 
+    //só funciona com pix agament
     public function buscarPixCriado($external_reference)
     {
         date_default_timezone_set('America/Sao_Paulo');
