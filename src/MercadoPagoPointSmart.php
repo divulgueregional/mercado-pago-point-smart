@@ -566,12 +566,12 @@ class MercadoPagoPointSmart
         }
     }
 
-    //pix por meio de payment
+    //novo pix por meio de payment
     public function criarPixPayment($filter, String $codigo_interno)
     {
         $options['headers']['Content-Type'] = 'application/json';
-        $options['headers']['X-Idempotency-Key'] = $codigo_interno;
         $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['X-Idempotency-Key'] = $codigo_interno;
         $options['body'] = json_encode($filter);
         try {
             $response = $this->client->request(

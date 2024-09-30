@@ -30,7 +30,7 @@ composer update
 <b>Ou pela última tag: </b>
 
 ```php
-composer update divulgueregional/mercado-pago-point-smart 1.0.8
+composer update divulgueregional/mercado-pago-point-smart 1.0.9
 ```
 
 <hr>
