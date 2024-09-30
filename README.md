@@ -13,24 +13,28 @@ Os endpoints disponibilizados por este pacote seguem a padronização do Mercado
 <b>Instalação: </b>
 Para utilizar a biblioteca através do composer:
 
-```php
-
+```bash
 composer require divulgueregional/mercado-pago-point-smart
-
 ```
 
 <br>
 
 ## Atualizar:
 
-```php
+```bash
 composer update
 ```
 
 <b>Ou pela última tag: </b>
 
-```php
+```bash
 composer update divulgueregional/mercado-pago-point-smart 1.0.9
+```
+
+<b>Remover </b>
+
+```bash
+composer remove divulgueregional/mercado-pago-point-smart
 ```
 
 <hr>
