@@ -107,7 +107,7 @@ CAIXA<br>
 PIX<br>
 
 - Criar Pix
-- Buscar Pix Criado<br>
+- Buscar Pix Criado (use base64)<br>
 <b>OBservação</b><br>
 Criar o pix payment funciona 100% o retorno, mas não obtive sucesso de retorno após criar e pagar o pix orders. Se conseguir o endpoind ou saber que ajustaram o webhook favor me avisar pra mim ajustar o projeto. rosenomatos@gmail.com
 <hr>
