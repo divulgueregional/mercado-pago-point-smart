@@ -565,31 +565,6 @@ class MercadoPagoPointSmart
             return ['error' => "Falha ao criar pix: {$response}"];
         }
     }
-
-    //novo pix por meio de payment
-    public function criarPixPayment($filter, String $codigo_interno)
-    {
-        $options['headers']['Content-Type'] = 'application/json';
-        $options['headers']['Authorization'] = "Bearer {$this->token}";
-        $options['headers']['X-Idempotency-Key'] = $codigo_interno;
-        $options['body'] = json_encode($filter);
-        try {
-            $response = $this->client->request(
-                'POST',
-                "/v1/payments",
-                $options
-            );
-            $statusCode = $response->getStatusCode();
-            $result = json_decode($response->getBody()->getContents());
-            return array('status' => $statusCode, 'response' => $result);
-        } catch (ClientException $e) {
-            return $e->getMessage();
-        } catch (\Exception $e) {
-            $response = $e->getMessage();
-            return ['error' => "Falha ao criar pix: {$response}"];
-        }
-    }
-
     //só funciona com pix agament
     public function buscarPixCriado($external_reference)
     {
@@ -632,6 +607,29 @@ class MercadoPagoPointSmart
         } catch (\Exception $e) {
             $response = $e->getMessage();
             return ['error' => "Falha ao buscar pix recebido: {$response}"];
+        }
+    }
+
+    public function criarPixPayment($filter, String $codigo_interno)
+    {
+        $options['headers']['Content-Type'] = 'application/json';
+        $options['headers']['Authorization'] = "Bearer {$this->token}";
+        $options['headers']['X-Idempotency-Key'] = $codigo_interno;
+        $options['body'] = json_encode($filter);
+        try {
+            $response = $this->client->request(
+                'POST',
+                "/v1/payments",
+                $options
+            );
+            $statusCode = $response->getStatusCode();
+            $result = json_decode($response->getBody()->getContents());
+            return array('status' => $statusCode, 'response' => $result);
+        } catch (ClientException $e) {
+            return $e->getMessage();
+        } catch (\Exception $e) {
+            $response = $e->getMessage();
+            return ['error' => "Falha ao criar pix: {$response}"];
         }
     }
 

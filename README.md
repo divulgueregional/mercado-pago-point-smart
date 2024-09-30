@@ -28,7 +28,7 @@ composer update
 <b>Ou pela última tag: </b>
 
 ```bash
-composer update divulgueregional/mercado-pago-point-smart 1.0.9
+composer update divulgueregional/mercado-pago-point-smart 1.1.0
 ```
 
 <b>Remover </b>
